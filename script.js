@@ -1,6 +1,4 @@
-// script.js
-
-// Configuración inicial
+// configuarion de las opciones 
 const emojis = ["🍎", "🍌", "🍇", "🍓", "🍍", "🥝", "🍉", "🍒"];
 const cardsData = emojis.map((emoji, index) => ({ id: index, symbol: emoji }));
 
@@ -18,7 +16,7 @@ const restartBtn = document.getElementById("restartBtn");
 
 document.addEventListener("DOMContentLoaded", initializeGame);
 
-// Función principal para iniciar el juego
+// function principal para iniciar el juego
 function initializeGame() {
   time = 0;
   score = 0;
@@ -40,7 +38,7 @@ function initializeGame() {
   restartBtn.addEventListener("click", restartGame);
 }
 
-// Crea el tablero dinámicamente
+// crear el tablero 
 function createBoard(cards) {
   board.innerHTML = "";
 
@@ -57,7 +55,7 @@ function createBoard(cards) {
   });
 }
 
-// Mezcla las cartas
+// mezclar las cartas
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -66,14 +64,14 @@ function shuffle(array) {
   return array;
 }
 
-// Lógica de voltear carta
+// funcion para voltear las cartas
 function flipCard(card) {
   if (card.classList.contains("flipped") || card.classList.contains("matched") || flippedCards.length === 2) {
     return;
   }
 
   card.classList.add("flipped");
-  card.textContent = card.dataset.symbol; // Muestra el emoji
+  card.textContent = card.dataset.symbol; 
   flippedCards.push(card);
 
   if (flippedCards.length === 2) {
@@ -81,7 +79,7 @@ function flipCard(card) {
   }
 }
 
-// Verifica si las cartas coinciden
+// funcion para verificar si las cartas coinciden
 function checkMatch() {
   const [card1, card2] = flippedCards;
 
@@ -108,7 +106,7 @@ function checkMatch() {
   }
 }
 
-// Reinicia el juego
+// reiniciar el game
 function restartGame() {
   initializeGame();
 }
